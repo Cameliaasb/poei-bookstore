@@ -1,0 +1,43 @@
+header {
+  height:  100px;
+  background-color: #c5d7d7;
+  border-radius: 2px;
+  padding: 24px;
+  margin-bottom: 10px;
+}
+
+footer {
+  min-height: 10px;
+  background-color: #eeeff6;
+  margin-top: 20px;
+  padding: 24px;
+  clear: both;
+}
+
+nav {
+  width: 10%;
+  background-color: darkcyan;
+  min-height: 300px;
+  padding: 10px;
+  float: left;
+  margin-bottom: 10px;
+}
+
+section {
+  width: 85%;
+  min-height: 300px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 40px;
+}
