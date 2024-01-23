@@ -38,6 +38,7 @@ footer {
   float: left;
   margin-bottom: 10px;
   color: white;
+  height: 100vh;
 }
 
 
@@ -92,17 +93,27 @@ a {
 
 
 .book-card {
-  width: 100px;
-  height: 200px;
+  width: 150px;
+  height: 400px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 1px rgb(183, 179, 179);
+  padding: 10px;
+  overflow: hidden;
 }
 
-.book-title {
+.book-title, .book-price {
   font-weight: bold;
 }
 .book-cover {
-  width: 100px;
-  height: 150px;
+  width: 150px;
+  height: 200px;
+  margin-bottom: 10px;
 }
+.book-description {
+  display: flex;
+  align-items: flex-end;
+}
+
 
 #form {
   min-height: 300px;
