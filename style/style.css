@@ -1,43 +1,124 @@
-header {
-  height:  100px;
-  background-color: #c5d7d7;
-  border-radius: 2px;
-  padding: 24px;
-  margin-bottom: 10px;
+body {
+  font-size: small;
+  background-color: #FAFAFC;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+header {
+  height:  50px;
+  padding: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 
 footer {
   min-height: 10px;
-  background-color: #eeeff6;
+  background-color: rgb(195, 194, 194);
   margin-top: 20px;
-  padding: 24px;
+  padding: 32px;
   clear: both;
+  font-size: small;
+  color:rgb(99, 96, 96);
 }
 
-nav {
+#filters {
   width: 10%;
-  background-color: darkcyan;
-  min-height: 300px;
+  min-width: fit-content;
+  background-color: #c27662;
+  min-height: 500px;
   padding: 10px;
   float: left;
   margin-bottom: 10px;
+  color: white;
 }
+
 
 section {
-  width: 85%;
-  min-height: 300px;
+  width: 80%;
+  min-height: 500px;
   float: right;
   margin-bottom: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 
-h1 {
-  font-family: 'Courier New', Courier, monospace;
-}
 
 a {
-  color: white;
+  color: inherit;
   font-weight: bold;
   text-decoration: none;
-  line-height: 40px;
+}
+
+
+#logo {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.home-layout {
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  justify-content: space-around;
+  gap: 48px;
+}
+
+.big-title {
+  font-size: xxx-large;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: black 1px solid;
+  height: fit-content;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgb(183, 179, 179);
+  background-color: white;
+}
+
+
+.book-card {
+  width: 100px;
+  height: 200px;
+}
+
+.book-title {
+  font-weight: bold;
+}
+.book-cover {
+  width: 100px;
+  height: 150px;
+}
+
+#form {
+  min-height: 300px;
+  width: 50%;
+  margin: 100px auto;
+  background-color: white;
+  box-shadow: 2px 2px 2px 1px rgb(183, 179, 179);
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+input[type="email"], select, textarea {
+  width: 80%;
+  margin-bottom: 10px;
 }

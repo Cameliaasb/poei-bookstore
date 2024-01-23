@@ -7,24 +7,45 @@
   <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-  <header>
-    <h1> Nom du site</h1>
-  </header>
 
-    <nav>
-      <div> <a href="./home.html">      HOME </a> </div>
-      <div> <a href="./products.html">  PRODUCTS </a></div>
+  <div class="container">
+
+    <header>
+      <a href="./home.html"> <img id="logo" src="./media/open-book.png"  alt="open book"> </a>
+      <h2> Nom du site</h2>
+    </header>
+
+
+      <form action="#" method="post" id="form">
+        <h3>Contact</h3>
+        <div>
+          <p>Votre email</p>
+          <input type="email" id="email" required/>
+        </div>
+        <div>
+          <p>Sélectionner votre motif de contact</p>
+          <select required>
+              <option value="">  </option>
+              <option value="1">SAV</option>
+              <option value="2">Echec téléchargement</option>
+              <option value="3">Exemple</option>
+              <option value="4">Exemple</option>
+          </select>
+      </div>
+        <div>
+          <p>Votre message</p>
+          <textarea id="message"></textarea>
+        </div>
+
+        <input type="submit" class="btn"/>
+      </form>
+
+
+    <footer>
       <div> <a href="./contact.html">   CONTACT</a></div>
-    </nav>
+    </footer>
 
-    <section>
-        ici formulaire contact
-    </section>
-
-
-  <footer>
-    <p>texte pour footer</p>
-  </footer>
+  </div>
 
 </body>
 </html>
