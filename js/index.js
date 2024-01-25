@@ -1,8 +1,7 @@
 var toggleBtn = document.getElementById("toggleBtn")
 var form = document.getElementById("new-book-form")
-
-
 var bookTable = document.getElementById("book-table")
+
 
 // toggle
 toggleBtn.addEventListener("click", toggleForm )
@@ -41,12 +40,19 @@ function addBook(newBook) {
   var titleCell = newRow.insertCell();
   var authorCell = newRow.insertCell();
   var priceCell = newRow.insertCell();
+  var editCell = newRow.insertCell();
+  var deleteCell = newRow.insertCell();
 
   // Insert data into cells
   indexCell.appendChild(index);
   titleCell.appendChild(title);
   authorCell.appendChild(author);
   priceCell.appendChild(price);
+
+
+  // Create and append edit button
+  editCell.appendChild(createButton("Editer", "btn-primary edit"));
+  deleteCell.appendChild(createButton("supprimer", "btn-danger delete"));
 }
 
 
@@ -54,4 +60,12 @@ function addBook(newBook) {
 function lastID() {
   let index = Number(bookTable.lastElementChild.lastElementChild.firstElementChild.innerText)
   return index + 1
+}
+
+
+function createButton(string, className) {
+  var button = document.createElement("button");
+  button.className = `btn ${className}`;
+  button.textContent = string;
+  return button
 }
