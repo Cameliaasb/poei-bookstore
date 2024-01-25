@@ -166,7 +166,7 @@ a {
   font-size: xxx-large;
 }
 
-.btn {
+.action-btn {
   padding: 10px 20px;
   border: black 1px solid;
   height: fit-content;
@@ -201,7 +201,7 @@ a {
 }
 
 
-#form {
+#contact-form {
   min-height: 300px;
   width: 80%;
   margin: 100px auto;
@@ -235,4 +235,14 @@ input[type="email"], select, textarea {
 .separator {
   border-top: grey 1px solid;
   padding-top: 20px;
+}
+
+
+#new-book-form {
+  width: 300px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 1px rgb(183, 179, 179);
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
 }
