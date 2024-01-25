@@ -60,7 +60,6 @@ function addBook(newBook) {
 // get last ID
 function lastID() {
   let lastItem = bookTable.lastElementChild
-  console.log(lastItem)
   let index = lastItem ? Number(lastItem.firstElementChild.innerText) : 0    // if no element before => index starts at 0
   return index + 1
 }
@@ -74,6 +73,30 @@ function createButton(string, className, clickFunction) {
     clickFunction(event);
   });
   return button
+}
+
+
+// EDIT
+editForm.addEventListener("submit", (e) => editBook(e))
+
+function editBook(e) {
+  e.preventDefault()
+
+  // identifie la ligne à modifier
+  var row = document.getElementById("editing")
+  row.removeAttribute('id')
+
+  var indexCell = row.firstElementChild
+  var titleCell = indexCell.nextSibling
+  var authorCell = titleCell.nextSibling
+  var priceCell = authorCell.nextSibling
+
+  // effectue la modif
+  indexCell.innerText = document.getElementById("edit-index").value
+  titleCell.innerText = document.getElementById("edit-title").value
+  authorCell.innerText  = document.getElementById("edit-author").value
+  priceCell.innerText  = document.getElementById("edit-price").value
+  editForm.classList.toggle("d-none");
 }
 
 function editRow(e) {
@@ -105,33 +128,9 @@ function handleEditForm(book) {
   editForm.classList.toggle("d-none");
 }
 
-editForm.addEventListener("submit", (e) => editBook(e))
 
-function editBook(e) {
-  e.preventDefault()
-
-  // identifie la ligne à modifier
-  var row = document.getElementById("editing")
-  row.removeAttribute('id')
-
-  console.log(row.firstElementChild)
-  var indexCell = row.firstElementChild
-  var titleCell = indexCell.nextSibling
-  var authorCell = titleCell.nextSibling
-  var priceCell = authorCell.nextSibling
-
-  // effectue la modif
-  indexCell.innerText = document.getElementById("edit-index").value
-  titleCell.innerText = document.getElementById("edit-title").value
-  authorCell.innerText  = document.getElementById("edit-author").value
-  priceCell.innerText  = document.getElementById("edit-price").value
-  editForm.classList.toggle("d-none");
-
-
-}
-
-
-
-function deleteRow() {
-  console.log("pas encore")
+// DELETE
+function deleteRow(e) {
+  var row = e.currentTarget.parentElement.parentElement
+  row.remove();
 }
