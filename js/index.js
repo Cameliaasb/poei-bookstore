@@ -3,15 +3,20 @@ var form = document.getElementById("new-book-form")
 var bookTable = document.getElementById("book-table")
 var editForm = document.getElementById("edit-book-form")
 
-// toggle
+
+// --------------------------- NEW ---------------------------------------
+
+// toggle new-book-form
 toggleBtn.addEventListener("click", toggleForm )
 function toggleForm() {
   form.classList.toggle("d-none")
 }
 
-// New book
+// Submitting the new-book-form
 form.addEventListener("submit", (e)=> submitBook(e))
 
+
+// create book object
 function submitBook(e) {
   e.preventDefault()
   form.classList.toggle("d-none")
@@ -26,6 +31,8 @@ function submitBook(e) {
   addBook(newBook)
 }
 
+
+// display book object in table
 function addBook(newBook) {
   // Usable data for table
   var index = document.createTextNode(lastID())
@@ -64,7 +71,7 @@ function lastID() {
   return index + 1
 }
 
-
+// create buttons with embeded event listeners
 function createButton(string, className, clickFunction) {
   var button = document.createElement("button");
   button.className = `btn ${className}`;
@@ -76,9 +83,14 @@ function createButton(string, className, clickFunction) {
 }
 
 
-// EDIT
+
+// --------------------------- EDIT ----------------------------------------
+
+// when submitting the edit form.
 editForm.addEventListener("submit", (e) => editBook(e))
 
+
+// called by the button (function createButton for more details)
 function editBook(e) {
   e.preventDefault()
 
@@ -129,7 +141,10 @@ function handleEditForm(book) {
 }
 
 
-// DELETE
+
+
+// --------------------------- DELETE ---------------------------------------
+
 function deleteRow(e) {
   var row = e.currentTarget.parentElement.parentElement
   row.remove();
