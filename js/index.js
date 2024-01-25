@@ -1,7 +1,7 @@
 var toggleBtn = document.getElementById("toggleBtn")
 var form = document.getElementById("new-book-form")
 var bookTable = document.getElementById("book-table")
-
+var editForm = document.getElementById("edit-book-form")
 
 // toggle
 toggleBtn.addEventListener("click", toggleForm )
@@ -21,6 +21,7 @@ function submitBook(e) {
     author: document.getElementById("author").value,
     price: Number(document.getElementById("price").value)   // pas de gestion des erreurs
   }
+
   form.reset()
   addBook(newBook)
 }
@@ -51,21 +52,86 @@ function addBook(newBook) {
 
 
   // Create and append edit button
-  editCell.appendChild(createButton("Editer", "btn-primary edit"));
-  deleteCell.appendChild(createButton("supprimer", "btn-danger delete"));
+  editCell.appendChild(createButton("Editer", "btn-primary edit", editRow));
+  deleteCell.appendChild(createButton("supprimer", "btn-danger delete", deleteRow));
 }
 
 
 // get last ID
 function lastID() {
-  let index = Number(bookTable.lastElementChild.lastElementChild.firstElementChild.innerText)
+  let lastItem = bookTable.lastElementChild
+  console.log(lastItem)
+  let index = lastItem ? Number(lastItem.firstElementChild.innerText) : 0    // if no element before => index starts at 0
   return index + 1
 }
 
 
-function createButton(string, className) {
+function createButton(string, className, clickFunction) {
   var button = document.createElement("button");
   button.className = `btn ${className}`;
   button.textContent = string;
+  button.addEventListener("click", function(event) {
+    clickFunction(event);
+  });
   return button
+}
+
+function editRow(e) {
+  //get row data
+  var row = e.currentTarget.parentElement.parentElement
+  row.setAttribute('id',"editing");
+  var indexCell = row.firstElementChild
+  var titleCell = indexCell.nextSibling
+  var authorCell = titleCell.nextSibling
+  var priceCell = authorCell.nextSibling
+
+  // give it to object
+  var book = {
+    index: indexCell.innerText,
+    title: titleCell.innerText,
+    author: authorCell.innerText,
+    price: priceCell.innerText,
+  }
+
+  handleEditForm(book)
+}
+
+
+function handleEditForm(book) {
+  document.getElementById("edit-index").value = book.index
+  document.getElementById("edit-title").value = book.title
+  document.getElementById("edit-author").value = book.author
+  document.getElementById("edit-price").value = book.price
+  editForm.classList.toggle("d-none");
+}
+
+editForm.addEventListener("submit", (e) => editBook(e))
+
+function editBook(e) {
+  e.preventDefault()
+
+  // identifie la ligne à modifier
+  var row = document.getElementById("editing")
+  row.removeAttribute('id')
+
+  console.log(row.firstElementChild)
+  var indexCell = row.firstElementChild
+  var titleCell = indexCell.nextSibling
+  var authorCell = titleCell.nextSibling
+  var priceCell = authorCell.nextSibling
+
+  // effectue la modif
+  indexCell.innerText = document.getElementById("edit-index").value
+  titleCell.innerText = document.getElementById("edit-title").value
+  authorCell.innerText  = document.getElementById("edit-author").value
+  priceCell.innerText  = document.getElementById("edit-price").value
+  editForm.classList.toggle("d-none");
+
+
+}
+
+
+
+function deleteRow() {
+  console.log("pas encore")
 }

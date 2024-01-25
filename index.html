@@ -32,8 +32,28 @@
               <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>
 
+            <form id="edit-book-form" class="d-none">
+              <div class="mb-3">
+                <label for="index" class="form-label"> #</label>
+                <input type="text" class="form-control" id="edit-index" required>
+              </div>
+              <div class="mb-3">
+                <label for="title" class="form-label"> Titre</label>
+                <input type="text" class="form-control" id="edit-title" required>
+              </div>
+              <div class="mb-3">
+                <label for="author" class="form-label"> Auteur</label>
+                <input type="text" class="form-control" id="edit-author" required>
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label"> Prix en €</label>
+                <input type="text" class="form-control" id="edit-price" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Modifier</button>
+            </form>
 
-            <table class="table table-striped" id="book-table">
+
+            <table class="table table-striped" >
                 <thead>
                   <tr class="table-dark">
                     <th scope="col">#</th>
@@ -44,30 +64,8 @@
                     <th scope="col">Supprimer</th>
                   </tr>
                 </thead>
-                <tbody >
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Livre 1</td>
-                    <td>Auteur 1</td>
-                    <td>prix €</td>
-                    <td><button class='btn btn-primary edit'>Editer</button></td>
-                    <td><button class='btn btn-danger delete'>Supprimer</button></td>
-                  </tr><tr>
-                    <th scope="row">2</th>
-                    <td>Livre 2</td>
-                    <td>Auteur 2</td>
-                    <td>prix €</td>
-                    <td><button class='btn btn-primary edit'>Editer</button></td>
-                    <td><button class='btn btn-danger delete'>Supprimer</button></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Livre 3</td>
-                    <td>Auteur 3</td>
-                    <td>prix €</td>
-                    <td><button class='btn btn-primary edit'>Editer</button></td>
-                    <td><button class='btn btn-danger delete'>Supprimer</button></td>
-                  </tr>
+                <tbody id="book-table">
+
 
                 </tbody>
               </table>
