@@ -3,19 +3,16 @@ var ebooks = []
 function showBooksList(){
     //Générer le nouveau code HTML à injecter : <tr> <td>..</td>...</tr>
     let newHTML = "";
-    console.log(ebooks)
-    if (ebooks.length > 0) {
-      for(let i = 0; i < ebooks.length; i++){
-          newHTML += "<tr>";
-              newHTML += "<td>" + ebooks[i].id + "</td>";
-              newHTML += "<td>" + ebooks[i].title + "</td>";
-              newHTML += "<td>" + ebooks[i].author + "</td>";
-              newHTML += "<td>" + ebooks[i].price + "</td>";
-              newHTML += "<td><button class='btn btn-primary' onclick='toggleEditForm("+JSON.stringify(ebooks[i])+")'>Editer</button></td>";
-              //newHTML += "<td><button class='btn btn-primary' onclick='toggleEditForm("+ebooks[i].id+")'>Editer</button></td>";
-              newHTML += "<td><button class='btn btn-danger' onclick=(deleteEbook("+ ebooks[i].id +"))>Supprimer</button></td>";
-          newHTML += "</tr>";
-      }
+    for(let i = 0; i < ebooks.length; i++){
+        newHTML += "<tr>";
+            newHTML += "<td>" + ebooks[i].id + "</td>";
+            newHTML += "<td>" + ebooks[i].title + "</td>";
+            newHTML += "<td>" + ebooks[i].author + "</td>";
+            newHTML += "<td>" + ebooks[i].price + "</td>";
+            newHTML += "<td><button class='btn btn-primary' onclick='toggleEditForm("+JSON.stringify(ebooks[i])+")'>Editer</button></td>";
+            //newHTML += "<td><button class='btn btn-primary' onclick='toggleEditForm("+ebooks[i].id+")'>Editer</button></td>";
+            newHTML += "<td><button class='btn btn-danger' onclick=(deleteEbook("+ ebooks[i].id +"))>Supprimer</button></td>";
+        newHTML += "</tr>";
     }
 
     //Récupérer l'élément tbody et y injecter le code HTML
@@ -23,44 +20,23 @@ function showBooksList(){
     tbody.innerHTML = newHTML;
 }
 
-/*function toggleEditForm(id){
-    console.log(id);
-    let editBlock = document.getElementById("divEditForm");
-    if(id !== undefined){
-        const ebook = ebooks.find(book => book.id === Number(id));
-        console.log(ebook);
-        document.getElementById("titleEd").value = ebook.title;
-        document.getElementById("authorEd").value = ebook.author;
-        document.getElementById("priceEd").value = ebook.price;
-    }
-    editBlock.classList.toggle('d-none');
-}*/
 
 function deleteEbook(id){
-    if(confirm("Etes-vous sûre de vouloir supprimer le livre?")){
-        ebooks = ebooks.filter(book=>book.id !== id);
-        showBooksList();
-    }
-
+  if(confirm("Etes-vous sûre de vouloir supprimer le livre?")){
+      ebooks = ebooks.filter(book=>book.id !== id);
+      showBooksList();
+  }
 }
 
 function toggleEditForm(ebook){
-    console.log(typeof(ebook));
     let editBlock = document.getElementById("divEditForm");
     if(ebook !== undefined){
-        //ebook = JSON.parse(ebook);
         document.getElementById("titleEd").value = ebook.title;
         document.getElementById("authorEd").value = ebook.author;
         document.getElementById("priceEd").value = ebook.price;
         document.getElementById("idEd").value = ebook.id;
-        if(editBlock.classList.contains("d-none"))
-            editBlock.classList.remove("d-none");
-
-    }
-    else{
-       editBlock.classList.add("d-none");
-    }
-
+        editBlock.classList.toggle("d-none")
+      }
 }
 
 function toggleAddForm(){
@@ -69,7 +45,7 @@ function toggleAddForm(){
 }
 
 function getLastId(){
-    return ebooks[ebooks.length-1].id;
+    return ebooks.length > 0 ? ebooks[ebooks.length-1].id : 0
 }
 
 function collectFormData(){
@@ -98,10 +74,10 @@ function resetAddForm(){
 
 function addNewBook(event){
     event.preventDefault();
-    console.log(event);
 
     //Récupérer les valeurs des champs et créer un nouvel objet ebook
     let newEbook = collectFormData();
+    console.log(newEbook)
 
     //Ajouter le nouvel objet au tableau ebooks
     ebooks.push(newEbook);
@@ -118,7 +94,6 @@ function addNewBook(event){
 
 function editBook(event){
     event.preventDefault();
-    //console.log("Edit en cours");
 
     //Récupérer les données du livre modifié
     let editedBook = collectFormDataEdit();
